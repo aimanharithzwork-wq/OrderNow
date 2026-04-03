@@ -14,9 +14,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app" class="mobile-container">
-        <!-- Screens Container -->
-        <main id="screen-container">
+    <!-- iPhone Device Mockup -->
+    <div class="device-iphone">
+        <div class="device-frame">
+            <div class="device-screen">
+                <div id="app" class="mobile-container">
+                    <!-- Screens Container -->
+                    <main id="screen-container">
             <!-- Login Screen -->
             <section id="login-screen" class="screen active">
                 <div class="header-logo">
@@ -218,7 +222,17 @@
                 <button class="btn btn-secondary" onclick="showScreen('login-screen')">New Order</button>
             </section>
 
-        </main>
+            </div>
+            <!-- Device Navigation Bar (Indicator) -->
+            <div class="device-indicator"></div>
+        </div>
+        <!-- Device Side Buttons -->
+        <div class="device-btns">
+            <div class="btn-silent"></div>
+            <div class="btn-vol-up"></div>
+            <div class="btn-vol-down"></div>
+            <div class="btn-power"></div>
+        </div>
     </div>
 
     <script src="script.js"></script>
