@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrderNow | Smart Restaurant Ordering</title>
+    <meta name="description" content="Fast, seamless, and intuitive food ordering for your favorite restaurants.">
+    <!-- Google Fonts: Inter and Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="mobile-container">
+        <!-- Screens Container -->
+        <main id="screen-container">
+            <!-- Login Screen -->
+            <section id="login-screen" class="screen active">
+                <div class="header-logo">
+                    <div class="logo-circle">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <h1>OrderNow</h1>
+                    <p class="tagline">Smart Dining Experience</p>
+                </div>
+                <div class="glass-card login-form">
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="username" placeholder="Enter username">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="password" placeholder="Enter password">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="showScreen('branch-screen')">Login</button>
+                    <div class="forgot-pass">Forgot password?</div>
+                </div>
+            </section>
+
+            <!-- Branch Selection Screen -->
+            <section id="branch-screen" class="screen">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="showScreen('login-screen')"><i class="fa-solid fa-chevron-left"></i></button>
+                    <h2>Select Branch</h2>
+                </div>
+                <div class="branch-list">
+                    <div class="glass-card branch-card" onclick="selectBranch('KOTA BHARU')">
+                        <div class="branch-info">
+                            <h3>KOTA BHARU</h3>
+                            <p><i class="fa-solid fa-location-dot"></i> Ground Floor, KB Mall</p>
+                            <span class="status-pill status-available">Available</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="glass-card branch-card" onclick="selectBranch('KUBANG KERIAN')">
+                        <div class="branch-info">
+                            <h3>KUBANG KERIAN</h3>
+                            <p><i class="fa-solid fa-location-dot"></i> Near HUSM Main Gate</p>
+                            <span class="status-pill status-available">Available</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="glass-card branch-card" onclick="selectBranch('PENGKALAN CHEPA')">
+                        <div class="branch-info">
+                            <h3>PENGKALAN CHEPA</h3>
+                            <p><i class="fa-solid fa-location-dot"></i> Airport Business Park</p>
+                            <span class="status-pill status-available">Available</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mode Selection Screen -->
+            <section id="mode-screen" class="screen">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="showScreen('branch-screen')"><i class="fa-solid fa-chevron-left"></i></button>
+                    <h2>Order Mode</h2>
+                </div>
+                <div class="mode-options">
+                    <div class="glass-card mode-card" onclick="selectMode('Dine In')">
+                        <div class="mode-icon"><i class="fa-solid fa-chair"></i></div>
+                        <h3>Dine In</h3>
+                        <p>Enjoy your meal in our restaurant</p>
+                    </div>
+                    <div class="glass-card mode-card" onclick="selectMode('Take Away')">
+                        <div class="mode-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                        <h3>Take Away</h3>
+                        <p>Pick up and eat anywhere else</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Customer Details Screen -->
+            <section id="details-screen" class="screen">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="showScreen('mode-screen')"><i class="fa-solid fa-chevron-left"></i></button>
+                    <h2>Order Details</h2>
+                </div>
+                <div class="glass-card details-form">
+                    <div class="input-group">
+                        <label for="order-date">Date</label>
+                        <input type="date" id="order-date" value="2024-04-03">
+                    </div>
+                    <div class="input-group">
+                        <label for="order-time">Time</label>
+                        <input type="time" id="order-time" value="12:00">
+                    </div>
+                    <div class="input-group">
+                        <label for="people-count">Number of People</label>
+                        <div class="number-input">
+                            <button onclick="changeNumber('people-count', -1)">-</button>
+                            <input type="number" id="people-count" value="1" min="1" readonly>
+                            <button onclick="changeNumber('people-count', 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="table-needs">Table Needs</label>
+                        <select id="table-needs">
+                            <option>Window Seat</option>
+                            <option>Near AC</option>
+                            <option>Corner Table</option>
+                            <option>No Preference</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="showScreen('menu-screen')">Next</button>
+                </div>
+            </section>
+
+            <!-- Menu Screen -->
+            <section id="menu-screen" class="screen">
+                <div class="screen-header-alt">
+                    <div class="header-top">
+                        <button class="back-btn" onclick="showScreen('details-screen')"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div id="selected-branch-label">KOTA BHARU</div>
+                        <div class="cart-trigger"><i class="fa-solid fa-basket-shopping"></i><span id="cart-count">0</span></div>
+                    </div>
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Search delicious food...">
+                    </div>
+                    <div class="category-tabs">
+                        <div class="tab active" data-category="all">All</div>
+                        <div class="tab" data-category="mains">Mains</div>
+                        <div class="tab" data-category="sides">Sides</div>
+                        <div class="tab" data-category="drinks">Drinks</div>
+                    </div>
+                </div>
+                <div class="menu-grid" id="menu-items">
+                    <!-- Items will be injected by JS -->
+                </div>
+                
+                <div id="cart-peek" class="glass-card" onclick="openCheckout()">
+                    <div class="peek-info">
+                        <span id="peek-qty">0 items</span>
+                        <span id="peek-total">RM 0.00</span>
+                    </div>
+                    <button class="btn btn-checkout">View Order <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Confirmation/Checkout screen -->
+            <div id="checkout-overlay" class="overlay">
+                <div class="overlay-content glass-card">
+                    <div class="overlay-header">
+                        <h2>Order Summary</h2>
+                        <button class="close-overlay" onclick="closeCheckout()"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div id="cart-summary-list">
+                        <!-- Summary items -->
+                    </div>
+                    <div class="summary-total">
+                        <div class="total-row">
+                            <span>Subtotal</span>
+                            <span id="summary-subtotal">RM 0.00</span>
+                        </div>
+                        <div class="total-row">
+                            <span>SST (6%)</span>
+                            <span id="summary-tax">RM 0.00</span>
+                        </div>
+                        <div class="total-row final">
+                            <span>Total</span>
+                            <span id="summary-total">RM 0.00</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="confirmOrder()">Confirm Order</button>
+                </div>
+            </div>
+
+            <!-- Receipt/QR Screen -->
+            <section id="receipt-screen" class="screen">
+                <div class="glass-card receipt-card">
+                    <div class="receipt-header">
+                        <div class="status-check"><i class="fa-solid fa-check"></i></div>
+                        <h2>Order Success!</h2>
+                        <p>Thank you for choosing us</p>
+                    </div>
+                    <div class="qr-container">
+                        <div id="qr-code">
+                            <i class="fa-solid fa-qrcode"></i>
+                            <p>SCAN TO VERIFY</p>
+                        </div>
+                    </div>
+                    <div class="receipt-info">
+                        <div class="info-row"><span>Order ID:</span> <span id="receipt-id">#ON-7782</span></div>
+                        <div class="info-row"><span>Payment:</span> <span id="payment-status">PAID</span></div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" onclick="showScreen('login-screen')">New Order</button>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
